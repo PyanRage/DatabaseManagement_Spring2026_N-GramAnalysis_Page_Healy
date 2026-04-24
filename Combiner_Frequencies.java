@@ -5,9 +5,18 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class Combiner_Frequencies extends Reducer<Text, IntWritable, Text, IntWritable> {
+/*
+    Author: Ryan Page, Michael Healy
+    Date: 04/23/2026
+    Description: Combiner for MapReduce, Reduces Network and Memory Usage
+    Source Code Adapted from https://github.com/stepthom/CountNGrams/blob/master/src/CountNGrams.java,
+        https://www.jesse-anderson.com/2013/07/cloudera-quickstart-vm-and-eclipse/,
+        https://medium.com/data-science/chaining-multiple-mapreduce-jobs-with-hadoop-java-832a326cbfa7,
+        and Generated from ChatGPT
+*/
 
-    // COMBINER TO REDUCE NETWORK USAGE, TO REDUCE MEMORY USAGE
+// "Mini-Reducer"
+public class Combiner_Frequencies extends Reducer<Text, IntWritable, Text, IntWritable> {
 
     private IntWritable frequency = new IntWritable();
 
@@ -18,7 +27,7 @@ public class Combiner_Frequencies extends Reducer<Text, IntWritable, Text, IntWr
         int freq_sum = 0;
 
         for (IntWritable val : values) {
-            // Combines Frequency Values
+            // Combines Frequency Vales
             freq_sum += val.get();
         }
 
