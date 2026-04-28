@@ -1,5 +1,4 @@
-package org.example;
-import java.io.IOException;
+package nGramAnalysis;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Job;
